@@ -45,6 +45,11 @@ from Nigerian_Breweries
 group by Brands
 order by TotalProfit desc;
 
+--Overall Profit Margin--
+select sum(profit) as TotalProfit, sum(quantity * unit_price) as TotalRevenue,
+round(sum(profit),2) * 100 / sum(quantity * unit_price) as ProfitMargin
+from Nigerian_breweries;
+
 
 
 
