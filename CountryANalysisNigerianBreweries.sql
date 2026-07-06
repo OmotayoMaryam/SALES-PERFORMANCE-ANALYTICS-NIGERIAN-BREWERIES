@@ -1,3 +1,11 @@
+Alter table Nigerian_breweries 
+add TERRITORIES nvarchar(20);
+
+update Nigerian_Breweries
+set TERRITORIES = 
+case when countries in ('benin','senegal','togo') then 'Francophone'
+else 'Anglophone'
+end;
 select * from Nigerian_Breweries;
 select countries,
 case when countries in ('benin','senegal','togo') then 'Francophone'
