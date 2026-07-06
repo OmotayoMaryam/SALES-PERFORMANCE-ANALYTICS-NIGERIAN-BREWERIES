@@ -1,13 +1,3 @@
-
-Alter table Nigerian_breweries 
-add TERRITORIES nvarchar(20);
-
-update Nigerian_Breweries
-set TERRITORIES = 
-case when countries in ('benin','senegal','togo') then 'Francophone'
-else 'Anglophone'
-end;
-
 --PROFIT ANALYSIS--
 --PROFIT FOR THE LAST THREE YEARS--
 select YEARS,TERRITORIES,sum(profit) as Total_Profit from Nigerian_Breweries
