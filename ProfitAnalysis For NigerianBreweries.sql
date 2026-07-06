@@ -1,11 +1,3 @@
-select * from Nigerian_Breweries;
-select countries,
-case when countries in ('benin','senegal','togo') then 'Francophone'
-else 'Anglophone'
-end as TERRITORIES
-from Nigerian_Breweries;
-
-select distinct countries from Nigerian_Breweries;
 
 Alter table Nigerian_breweries 
 add TERRITORIES nvarchar(20);
