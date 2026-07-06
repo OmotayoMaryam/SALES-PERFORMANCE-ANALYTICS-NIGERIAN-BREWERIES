@@ -1,3 +1,10 @@
+select * from Nigerian_Breweries;
+select countries,
+case when countries in ('benin','senegal','togo') then 'Francophone'
+else 'Anglophone'
+end as TERRITORIES
+from Nigerian_Breweries;
+
 --Country with the highest consumption of beer--
 select countries, product_type, sum(QUANTITY) as TotalQ
 From Nigerian_breweries
