@@ -27,6 +27,13 @@ from Nigerian_Breweries
 group by years
 order by Total_Profit desc;
 
+--Profit Rank--
+select months, sum(profit) as TotalProfit,
+rank() over(order by sum(profit) desc) as ProfitRank
+from Nigerian_Breweries
+group by MONTHS
+order by ProfitRank;
+
 --MONTH WHERE LEAST PROFIT WAS GENERATED--
 Select months,sum(profit) as Total_Profit from Nigerian_Breweries
 group by Months
