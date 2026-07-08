@@ -1,11 +1,32 @@
 --BRAND ANALYSIS--
---Top Three brands consumed in the last two years in Francophone--
-Select TOP 3 BRANDS, SUM(QUANTITY) as QuantityConsumed 
-from Nigerian_Breweries
-where (years between 2018 and 2019) and 
-TERRITORIES = 'Francophone'
+--Top 3 Brands consumed in the last selected years in Francophone--
+select * from Nigerian_Breweries;
+WITH NBTerritories as (
+select *,
+case when countries in ('Ghana', 'Nigeria') then 'Anglophone'
+else 'Francophone'
+end as Territories
+from Nigerian_Breweries)
+select TOP 3 Brands, sum(quantity) as QuantityConsumed
+from NBTerritories
+where (Years between 2017 and 2019) and 
+Territories = 'francophone'
 group by brands
 order by QuantityConsumed desc;
+
+--Find BEERS consumed in Nigeria in the past Three Years---
+with Nigerian_BreweriesCte_test as (
+select * ,
+case when brands in ('beta malt', 'grand malt') then 'Malt'
+else 'Beer'
+end as Product_Type
+from Nigerian_Breweries)
+select product_type, sum(quantity) as TotalQConsumed
+from Nigerian_BreweriesCte_test
+where countries = 'Nigeria'
+and (years between 2018 and 2020)
+group by Product_Type
+order by TotalQConsumed desc;
 
 --Top two choices brand in ghana--
 select * from Nigerian_Breweries;
